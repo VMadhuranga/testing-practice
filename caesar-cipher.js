@@ -48,6 +48,8 @@ export default function caesarCipher(string, shift) {
   string.split("").forEach((letter) => {
     if (letter in cipher(shift)) {
       cipheredString += cipher(shift)[letter];
+    } else if (/[A-Z]/.test(letter)) {
+      cipheredString += cipher(shift)[letter.toLowerCase()].toUpperCase();
     } else {
       cipheredString += letter;
     }
